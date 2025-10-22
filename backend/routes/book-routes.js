@@ -1,6 +1,10 @@
 import express from "express";
-import addBook from "../controllers/book-controller.js";
+import { addBook, listBook } from "../controllers/book-controller.js";
+import authMiddleware from "../middleware/auth-middleware.js";
 const router = express.Router();
-router.post("/addbook", addBook);
+router.post("/addbook", authMiddleware,addBook);
+router.get("/listBook",listBook);
+
+
 
 export default router;

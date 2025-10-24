@@ -3,7 +3,6 @@ import User from "../models/user-model.js";
 
 const addBookService = async(name,author_id,category,language)=>{
     try{
-
         const user=await User.findOne({where:{id:author_id}})
         if(!user.is_admin){
             return {success:false,message:"is not admin"}

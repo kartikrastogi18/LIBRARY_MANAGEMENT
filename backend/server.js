@@ -3,8 +3,19 @@ import pg from "pg";
 import  sequelize  from "./db.js"; 
 import authRoutes from "./routes/user-routes.js" 
 import bookRoutes from "./routes/book-routes.js" 
+import cors from "cors";
+
 
 const app = express();
+app.use(cors({
+  origin: [
+    "http://127.0.0.1:8080",   // live-server default
+    "http://localhost:8080",   // sometimes browser converts 127.0.0.1 → localhost
+    "http://127.0.0.1:5500",   // (optional) if you use serve on port 5500
+    "http://localhost:5500"
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 
@@ -24,4 +35,4 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+app.listen(5000, () => console.log("Server running on http://localhost:5000"));

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | TheZman Library</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard ⚙️</h1>
+    <button id="logoutBtn">Logout</button>
+  </header>
+
+  <section class="form-section">
+    <h2>Add / Update Book</h2>
+    <input type="text" id="bookId" placeholder="Book ID (for Update/Delete)">
+    <input type="text" id="bookName" placeholder="Book Name">
+    <input type="text" id="bookCategory" placeholder="Category">
+    <input type="text" id="bookLanguage" placeholder="Language">
+    <input type="text" id="bookdescription" placeholder="description">
+    <input type="text" id="bookauthor_name" placeholder="author_name">
+    <input type="date" id="bookPublished" placeholder="Published On">
+    <div class="btn-group">
+      <button id="addBookBtn">Add Book</button>
+      <button id="updateBookBtn">Update Book</button>
+      <button id="deleteBookBtn">Delete Book</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>📚 All Books</h2>
+    <div id="bookList" class="book-grid"></div>
+  </section>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

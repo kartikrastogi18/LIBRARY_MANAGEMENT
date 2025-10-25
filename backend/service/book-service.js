@@ -1,7 +1,7 @@
 import Book from "../models/book-model.js";
 import User from "../models/user-model.js";
 
-const addBookService = async(name,author_id,category,language)=>{
+const addBookService = async(name,author_id,category,language,description,author_name)=>{
     try{
         const user=await User.findOne({where:{id:author_id}})
         if(!user.is_admin){
@@ -11,7 +11,7 @@ const addBookService = async(name,author_id,category,language)=>{
         if(existingBook) {
             return {success:false,message:"book already exist"}
         }else{
-            await Book.create({name,author_id,category,language});
+            await Book.create({name,author_id,category,language,description,author_name});
             return {success:true,message:"book added successfully"}
         }
     }catch(err){

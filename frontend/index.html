@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheZman Library | Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">📚 TheZman Library</h1>
+
+    <div class="form-box">
+      <h2 id="formTitle">Login</h2>
+
+      <input type="text" id="name" placeholder="Name (for Signup only)" style="display:none;">
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+
+      <div id="loginButtons">
+        <button id="submitBtn">Login</button>
+      </div>
+
+      <div id="signupButtons" style="display:none;">
+        <button id="signupUserBtn" class="signup-btn">Signup as User</button>
+        <button id="signupAdminBtn" class="signup-btn">Signup as Admin</button>
+      </div>
+
+      <p id="toggleText">
+        Don’t have an account? <span id="toggleForm">Signup here</span>
+      </p>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

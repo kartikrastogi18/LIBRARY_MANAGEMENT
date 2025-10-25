@@ -7,6 +7,10 @@ const Book=sequelize.define("Book",{
         primaryKey:true,
         autoIncrement:true
     },
+    author_name:{
+        type:DataTypes.STRING,
+        allowNull:true,
+    },
     author_id:{
         type:DataTypes.INTEGER,
         allowNull:false,
@@ -22,6 +26,9 @@ const Book=sequelize.define("Book",{
     category:{
         type:DataTypes.STRING,
         allowNull:false
+    },
+    description:{
+        type:DataTypes.STRING,
     },
     published_on:{
         type:DataTypes.DATE,

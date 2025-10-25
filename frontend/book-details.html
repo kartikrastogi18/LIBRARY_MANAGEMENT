@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Details | TheZman Library</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>📖 Book Details</h1>
+    <button id="logoutBtn">Logout</button>
+  </header>
+
+  <div class="book-details-container">
+    <div class="book-details">
+      <div class="book-details-header">
+        <div class="book-details-image" id="bookImage">
+          <div class="book-placeholder">📚</div>
+        </div>
+        <div class="book-details-info">
+          <h1 id="bookName">Loading...</h1>
+          <div class="book-details-meta">
+            <div class="book-detail-item">
+              <span class="label">📂 Category:</span>
+              <span class="value" id="bookCategory">-</span>
+            </div>
+            <div class="book-detail-item">
+              <span class="label">🌍 Language:</span>
+              <span class="value" id="bookLanguage">-</span>
+            </div>
+             <div class="book-detail-item">
+                <span class="label">🆔 Book Description:</span>
+                <span class="value" id="bookdescription">-</span>
+              </div>
+              <div class="book-detail-item">
+                <span class="label">🆔 Author:</span>
+                <span class="value" id="bookauthor_name">-</span>
+              </div>
+            <div class="book-detail-item">
+              <span class="label">📅 Published:</span>
+              <span class="value" id="bookPublished">-</span>
+            </div>
+            <div class="book-detail-item">
+              <span class="label">🆔 Book ID:</span>
+              <span class="value" id="bookId">-</span>
+            </div>
+          </div>
+          <button class="back-btn" onclick="history.back()">← Back to Library</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/book-details.js"></script>
+</body>
+</html>

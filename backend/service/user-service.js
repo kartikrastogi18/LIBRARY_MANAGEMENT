@@ -1,6 +1,22 @@
 import User from "../models/user-model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+// const profileService=async(id,name,email,is_admin,created_at)=>{
+//   try{
+//     const userId = req.params.id; 
+//     const user = await User.findByPk(userId, {
+//       attributes: ["id", "name", "email", "is_admin", "created_at"]
+//     });
+
+//     if (!user) {
+//       return res.status(404).json({ success: false, message: "User not found" });
+//     }
+
+//     res.status(200).json({ success: true, data: user });
+//   }catch(err){
+//     return err;
+//   }
+// }
 
 const signupService = async (name, email, password, isAdmin) => {
   try {
@@ -40,7 +56,7 @@ const loginService = async (email, password) => {
     }
     const token = await createToken(existingUser.id);
     console.log("--token", token)
-    return { success: true, data: token, message: "Login Successful" };
+    return { success: true, data: token, message: "Login Successful", isAdmin: existingUser?.is_admin };
   } catch (err) {
     console.log("--err", err)
     return err;

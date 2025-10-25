@@ -1,7 +1,22 @@
 import addBookService from "../service/book-service.js";
+import { Op } from "sequelize";
 import Book from "../models/book-model.js";
 import authMiddleware from "../middleware/auth-middleware.js";
 import User from "../models/user-model.js";
+const getBook=async(req,res)=>{
+  try{
+    const id = req.params.id;
+    console.log("--id", id)
+    const book=await Book.findByPk(id);
+    console.log("--book", book)
+    if(!book){
+      return res.status(400).json({success:false,message:"Book Not Found"});
+    }
+    res.status(200).json({success:true,data:book})
+  }catch(err){
+    return err;
+  }
+}
 const deletebook=async(req,res)=>{
   try{
     const author_id=req.id;
@@ -25,7 +40,7 @@ const updatebook = async (req, res) => {
             return res.status(400).json({success:false,message:"is not admin"})
         }
     const { id } = req.query;
-    const { name, language, category, published_on} = req.body;
+    const { name, language, category, published_on, description, author_name} = req.body;
     const book = await Book.findByPk(id);
     if (!book) {
       return res
@@ -37,6 +52,8 @@ const updatebook = async (req, res) => {
       language: language || book.language,
       category: category || book.category,
       author_id: author_id || book.author_id,
+      description: description|| book.description,
+      author_name: author_name|| book.author_name,
       published_on: published_on || book.published_on,
       updated_at: new Date(),
     });
@@ -49,10 +66,12 @@ const updatebook = async (req, res) => {
 };
 const listBook = async (req, res) => {
   try {
-    const { name, language, category, published_on, author_id } = req.query;
+    const { name, language, category, published_on, description, author_name, author_id } = req.query;
 
     let filters = {};
     if (language) filters.language = language;
+    if (author_name) filters.author_name = author_name;
+    if (name)  filters.name = { [Op.iLike]: `%${name}%` };
     console.log("ghj");
     console.log(";;;", language);
     if (category) filters.category = category;
@@ -82,17 +101,17 @@ const listBook = async (req, res) => {
 };
 const addBook = async (req, res) => {
   try {
-    const { name, category, language } = req.body;
+    const { name, category, language ,description,author_name} = req.body;
     const author_id = req.id;
     console.log(author_id);
-    if (!name || !category || !language) {
+    if (!name || !category || !language ||! description ||!author_name) {
       return res
         .status(400)
         .json({ message: "please fill the required fields" });
     }
     console.log("--abc", name);
 
-    const dataBook = await addBookService(name, author_id, category, language);
+    const dataBook = await addBookService(name, author_id, category, language,description,author_name);
     console.log("--pq", dataBook);
     if (dataBook.success) {
       return res.status(200).json({ message: dataBook.message });
@@ -104,4 +123,4 @@ const addBook = async (req, res) => {
     return err;
   }
 };
-export { addBook, listBook ,updatebook,deletebook};
+export { addBook, listBook ,updatebook,deletebook,getBook};

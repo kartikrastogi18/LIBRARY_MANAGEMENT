@@ -1,4 +1,4 @@
-const apiBase = "http://localhost:5000"; // Backend base URL
+const apiBase = "https://library-management-1-74wv.onrender.com"; // Backend base URL
 let isLogin = true;
 
 // Toggle between Login and Signup mode

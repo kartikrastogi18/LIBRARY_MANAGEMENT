@@ -23,6 +23,13 @@ const User =sequelize.define("User",{
         type:DataTypes.BOOLEAN,
         defaultValue:false
     },
+    is_otp_verified:{
+        type:DataTypes.BOOLEAN,
+        defaultValue:false
+    },
+    otp:{
+        type:DataTypes.STRING 
+    },
    
     created_at:{
         type:DataTypes.DATE,

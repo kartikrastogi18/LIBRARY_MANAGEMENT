@@ -7,6 +7,7 @@ import cors from "cors";
 
 
 const app = express();
+app.use(express.json());
 app.use(cors({
   origin: [
     "http://127.0.0.1:8080",   // live-server default
@@ -17,7 +18,6 @@ app.use(cors({
   ],
   credentials: true
 }));
-app.use(express.json());
 
 
 await sequelize.authenticate()

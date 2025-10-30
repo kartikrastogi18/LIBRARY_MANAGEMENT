@@ -3,7 +3,11 @@ import pg from "pg";
 import  sequelize  from "./db.js"; 
 import authRoutes from "./routes/user-routes.js" 
 import bookRoutes from "./routes/book-routes.js" 
+import cartRoutes from "./routes/cart-routes.js"
+
 import cors from "cors";
+import Cart from "./models/cart.js";
+import { canTreatArrayAsAnd } from "sequelize/lib/utils";
 
 
 const app = express();
@@ -35,5 +39,7 @@ app.get("/", async (req, res) => {
     res.status(500).send("Error connecting to DB");
   }
 });
+app.use(express.json());
+app.use("/cart",cartRoutes)
 
 app.listen(5000, () => console.log("Server running on http://localhost:5000"));

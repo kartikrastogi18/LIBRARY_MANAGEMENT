@@ -5,9 +5,6 @@ import authMiddleware from "../middleware/auth-middleware.js";
 
 // import pkg from "jsonwebtoken";
 // const { verify } = pkg;
-
-
-
 const router = express.Router();
 router.post("/signup", signup);
 router.post("/verify", verify);

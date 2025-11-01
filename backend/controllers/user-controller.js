@@ -2,6 +2,50 @@ import { loginService, signupService } from "../service/user-service.js";
 import authMiddleware from "../middleware/auth-middleware.js";
 
 import User from "../models/user-model.js";
+import Library from "../models/library-model.js";
+import Book from "../models/book-model.js";
+
+
+ const getMyBooks = async (req, res) => {
+  try {
+    const { id } = req.params; // user id
+
+    const myBooks = await Library.findAll({
+      where: { user_id: id },
+      include: [
+        {
+          model: Book,
+          attributes: [
+            "id",
+            "name",
+            "author_name",
+            "category",
+            "language",
+            "description",
+            "published_on"
+          ],
+        },
+      ],
+      order: [["purchased_at", "DESC"]],
+    });
+
+    if (myBooks.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No purchased books found for this user.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      totalBooks: myBooks.length,
+      books: myBooks,
+    });
+  } catch (error) {
+    console.error("Error fetching My Books:", error);
+    res.status(500).json({ success: false, message: "Error fetching My Books" });
+  }
+};
 
 const verify = async (req, res) => {
   try {
@@ -130,4 +174,4 @@ const login = async (req, res) => {
     return err;
   }
 };
-export { login, signup, getProfile, updateProfile, verify };
+export { login, signup, getProfile, updateProfile, verify ,getMyBooks};

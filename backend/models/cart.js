@@ -29,6 +29,10 @@ const Cart = sequelize.define("cart",{
         type:DataTypes.INTEGER,
         defaultValue:1
     },
+    is_Purchased:{
+        type:DataTypes.BOOLEAN,
+        defaultValue:false
+    },
     created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW

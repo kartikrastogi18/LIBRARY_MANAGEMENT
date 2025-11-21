@@ -30,6 +30,10 @@ const Book=sequelize.define("Book",{
     description:{
         type:DataTypes.STRING,
     },
+    price:{
+        type:DataTypes.INTEGER,
+        defaultValue:0
+    },
     published_on:{
         type:DataTypes.DATE,
         defaultValue:DataTypes.NOW

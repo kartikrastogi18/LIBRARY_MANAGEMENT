@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Books | TheZman Library</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+  <header>
+    <div class="profile-circle" id="profileBtn">
+      <img src="https://ui-avatars.com/api/?name=User&background=667eea&color=fff&bold=true&size=128" alt="Profile" id="profileImage">
+    </div>
+    
+    <h1>TheZman Library 📖</h1>
+    
+    <div class="header-right">
+      <button class="nav-btn active" id="myBooksBtn">
+        <span class="btn-icon">📚</span>
+        <span class="btn-text">My Books</span>
+      </button>
+      <button class="nav-btn" id="myCartBtn">
+        <span class="btn-icon">🛒</span>
+        <span class="btn-text">My Cart</span>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+      <button class="nav-btn" id="logoutBtn">
+        <span class="btn-icon">🚪</span>
+        <span class="btn-text">Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-container">
+      <div class="page-header">
+        <h2>📚 My Library</h2>
+        <p class="page-subtitle">Books you've borrowed or purchased</p>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="tab-btn active" data-filter="all">All Books</button>
+        <button class="tab-btn" data-filter="reading">Currently Reading</button>
+        <button class="tab-btn" data-filter="completed">Completed</button>
+        <button class="tab-btn" data-filter="wishlist">Wishlist</button>
+      </div>
+
+      <div class="my-books-grid" id="myBooksGrid">
+        <!-- Books will be loaded here -->
+      </div>
+
+      <div class="empty-state" id="emptyBooks" style="display: none;">
+        <div class="empty-icon">📚</div>
+        <h3>No books in your library yet</h3>
+        <p>Start building your collection by browsing our catalog!</p>
+        <a href="user.html" class="browse-btn">Browse Books</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/my-books.js"></script>
+</body>
+</html>

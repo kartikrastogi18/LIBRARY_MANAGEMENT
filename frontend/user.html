@@ -1,3 +1,4 @@
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,14 +9,75 @@
 </head>
 <body>
   <header>
-    <h1>Welcome to TheZman Library 📖</h1>
-    <button id="logoutBtn">Logout</button>
+    <div class="profile-circle" id="profileBtn">
+      <img src="https://ui-avatars.com/api/?name=User&background=667eea&color=fff&bold=true&size=128" alt="Profile" id="profileImage">
+    </div>
+    
+    <h1> TheZman Library 📖</h1>
+    
+    <div class="header-right">
+      <button class="nav-btn" id="myBooksBtn">
+        <span class="btn-icon">📚</span>
+        <span class="btn-text">My Books</span>
+      </button>
+      <button class="nav-btn" id="myCartBtn">
+        <span class="btn-icon">🛒</span>
+        <span class="btn-text">My Cart</span>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+      <button class="nav-btn" id="logoutBtn">
+        <span class="btn-icon">🚪</span>
+        <span class="btn-text">Logout</span>
+      </button>
+    </div>
   </header>
 
   <main>
     <div id="bookList" class="book-grid"></div>
   </main>
 
+  <script src="js/user.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User | TheZman Library</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+  <header>
+    <div class="profile-circle" id="profileBtn">
+      <img src="https://ui-avatars.com/api/?name=User&background=667eea&color=fff&bold=true&size=128" alt="Profile" id="profileImage">
+    </div>
+    
+    <h1>TheZman Library 📖</h1>
+    
+    <div class="header-right">
+      <button class="nav-btn" id="myBooksBtn">
+        <span class="btn-icon">📚</span>
+        <span class="btn-text">My Books</span>
+      </button>
+      <button class="nav-btn" id="myCartBtn">
+        <span class="btn-icon">🛒</span>
+        <span class="btn-text">My Cart</span>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+      <button class="nav-btn" id="logoutBtn">
+        <span class="btn-icon">🚪</span>
+        <span class="btn-text">Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div id="bookList" class="book-grid"></div>
+  </main>
+
+  <script src="js/navigation.js"></script>
   <script src="js/user.js"></script>
 </body>
 </html>

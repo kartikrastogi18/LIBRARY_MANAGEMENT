@@ -35,6 +35,7 @@ async function loadBookDetails() {
     document.getElementById("bookCategory").textContent = book.category;
     document.getElementById("bookLanguage").textContent = book.language;
     document.getElementById("bookdescription").textContent = book.description;
+    document.getElementById("price").textContent = book.price;
     document.getElementById("bookauthor_name").textContent = book.author_name;
     document.getElementById("bookPublished").textContent = book.published_on || "Not specified";
     document.getElementById("bookId").textContent = book.id;

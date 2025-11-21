@@ -211,7 +211,7 @@ export const updatebook = async (req, res) => {
   try {
     const author_id = req.id;
     const { id } = req.query;
-    const { name, language, category, published_on, description, author_name } = req.body;
+    const { name, language, category, published_on, description,price, author_name } = req.body;
 
     if (!id) {
       return res.status(400).json({
@@ -244,6 +244,7 @@ export const updatebook = async (req, res) => {
       category: category || book.category,
       author_id: author_id || book.author_id,
       description: description || book.description,
+      price:price||book.price,
       author_name: author_name || book.author_name,
       published_on: published_on || book.published_on,
       updated_at: new Date(),
@@ -304,7 +305,7 @@ export const listBook = async (req, res) => {
 
 export const addBook = async (req, res) => {
   try {
-    const { name, category, language, description, author_name } = req.body;
+    const { name, category, language, description, author_name ,price} = req.body;
     const author_id = req.id;
 
     if (!name || !category || !language || !description || !author_name) {
@@ -320,6 +321,7 @@ export const addBook = async (req, res) => {
       category,
       language,
       description,
+      price,
       author_name
     );
 

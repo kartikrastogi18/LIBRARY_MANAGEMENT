@@ -37,7 +37,7 @@ const signupService = async (name, email, password, isAdmin) => {
 
     const data = await sendOTP(email, otp);
 
-    const userdata=await User.create({ name, email, password: hash, is_admin: isUserAdmin , otp,is_otp_verified:false});
+    const userdata=await User.create({ name, email, password: hash, is_admin: isUserAdmin , otp,is_otp_verified:true});
 
     return { success: true, message: "OTP verified, signup successful",id:userdata?.id };
   } catch (err) {
@@ -72,9 +72,9 @@ const loginService = async (email, password) => {
     if (!existingUser) {
       return { success: false, message: "Please signup" };
     }
-    if(existingUser.is_otp_verified==false){
-      return { success: false, message: "OTP not verified" };
-    }
+    // if(existingUser.is_otp_verified==false){
+    //   return { success: false, message: "OTP not verified" };
+    // }
     const isMatch = await bcrypt.compare(password, existingUser.password);
     console.log("--isMatch", isMatch);
     if (!isMatch) {

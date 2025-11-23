@@ -320,9 +320,9 @@ export const addBook = async (req, res) => {
       author_id,
       category,
       language,
+      author_name,
       description,
       price,
-      author_name
     );
 
     if (dataBook.success) {

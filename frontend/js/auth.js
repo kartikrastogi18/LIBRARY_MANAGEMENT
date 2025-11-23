@@ -1,4 +1,4 @@
-const apiBase = "https://library-management-1-74wv.onrender.com"; // Backend base URL
+const apiBase = "http://localhost:5000"; // Backend base URL
 let isLogin = true;
 
 // Toggle between Login and Signup mode
@@ -44,6 +44,8 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
 
     localStorage.setItem("token", data.token);
     localStorage.setItem("isAdmin", data.isAdmin);
+    localStorage.setItem("user_id", data.id);
+
 
     alert(data.message);
     window.location.href = data.isAdmin ? "admin.html" : "user.html";

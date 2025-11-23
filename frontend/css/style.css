@@ -633,6 +633,11 @@ section h2 {
   flex-direction: column;
   gap: 15px;
 }
+.book-detail-description {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
 
 .book-detail-item {
   display: flex;

@@ -44,7 +44,7 @@ function loadCart() {
       <div class="cart-item-details">
         <div>
           <h3 class="cart-item-title">${book.name}</h3>
-          <p class="cart-item-author">${book.author || "Unknown Author"}</p>
+          <p class="cart-item-author">${book.author_name || "Unknown Author"}</p>
         </div>
         <div class="cart-item-footer">
           <span class="cart-item-price">$${price.toFixed(2)}</span>

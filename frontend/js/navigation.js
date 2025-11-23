@@ -1,5 +1,5 @@
 // Shared navigation logic for all pages
-const apiBase = "https://library-management-1-74wv.onrender.com";
+const apiBase = "http://localhost:5000";
 const token = localStorage.getItem("token");
 const username = localStorage.getItem("username") || "User";
 

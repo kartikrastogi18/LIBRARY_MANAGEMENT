@@ -1,4 +1,4 @@
-const apiBase = "https://library-management-1-74wv.onrender.com";
+const apiBase = "http://localhost:5000";
 const token = localStorage.getItem("token");
 
 if (!token) window.location.href = "index.html";

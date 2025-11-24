@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify OTP | TheZman Library</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+.otp-box {
+  background: rgba(255,255,255,0.1);
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  width: 350px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.otp-box h2 {
+  margin-bottom: 10px;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.otp-inputs input {
+  width: 45px;
+  height: 55px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+  font-size: 22px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  background: white;
+  color: #764ba2;
+  border: none;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ddd;
+}
+</style>
+
+</head>
+<body>
+
+<div class="otp-box">
+  <h2>Verify OTP</h2>
+  <p>Enter the 6-digit OTP sent to your email</p>
+
+  <div class="otp-inputs">
+    <input maxlength="1" class="otp-input" />
+    <input maxlength="1" class="otp-input" />
+    <input maxlength="1" class="otp-input" />
+    <input maxlength="1" class="otp-input" />
+    <input maxlength="1" class="otp-input" />
+    <input maxlength="1" class="otp-input" />
+  </div>
+
+  <button id="verifyBtn">Verify OTP</button>
+</div>
+
+<script src="js/verify-otp.js"></script>
+
+</body>
+</html>

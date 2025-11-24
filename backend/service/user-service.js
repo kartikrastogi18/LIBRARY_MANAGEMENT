@@ -37,9 +37,14 @@ const signupService = async (name, email, password, isAdmin) => {
 
     const data = await sendOTP(email, otp);
 
-    const userdata=await User.create({ name, email, password: hash, is_admin: isUserAdmin , otp,is_otp_verified:true});
+    const userdata=await User.create({ name, email, password: hash, is_admin: isUserAdmin , otp,is_otp_verified:false});
 
-    return { success: true, message: "OTP verified, signup successful",id:userdata?.id };
+    return { 
+      success: true, 
+      message: "OTP sent successfully. Please verify your OTP.", 
+      id: userdata.id 
+    };
+    
   } catch (err) {
     return err;
   }
@@ -72,9 +77,9 @@ const loginService = async (email, password) => {
     if (!existingUser) {
       return { success: false, message: "Please signup" };
     }
-    // if(existingUser.is_otp_verified==false){
-    //   return { success: false, message: "OTP not verified" };
-    // }
+    if(existingUser.is_otp_verified==false){
+      return { success: false, message: "OTP not verified" };
+    }
     const isMatch = await bcrypt.compare(password, existingUser.password);
     console.log("--isMatch", isMatch);
     if (!isMatch) {
@@ -87,6 +92,7 @@ const loginService = async (email, password) => {
       data: token,
       message: "Login Successful",
       isAdmin: existingUser?.is_admin,
+      id: existingUser.id
     };
   } catch (err) {
     console.log("--err", err);

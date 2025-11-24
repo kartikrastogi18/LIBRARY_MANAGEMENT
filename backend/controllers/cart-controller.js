@@ -134,14 +134,18 @@ export const purchaseBook = async (req, res) => {
 
 export const addToCart = async (req, res) => {
   try {
-    const { user_id, book_id } = req.body;
+
+    const { user_id, book_id } = req.body;  // <-- THIS MUST BE VERY FIRST!
+
+    console.log("USER:", user_id, "BOOK:", book_id);
 
     if (!user_id || !book_id) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "User ID and Book ID are required" 
+      return res.status(400).json({
+        success: false,
+        message: "User ID and Book ID are required",
       });
     }
+
 
     // Check if book exists
     const book = await Book.findByPk(book_id);

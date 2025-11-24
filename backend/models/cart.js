@@ -33,14 +33,15 @@ const Cart = sequelize.define("cart",{
         type:DataTypes.BOOLEAN,
         defaultValue:false
     },
-    created_at: {
+    createdAt: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
     },
-    updated_at: {
+    updatedAt: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW
-    }
+    },
+    
 })
 User.hasMany(Cart, { foreignKey: "user_id" });
 Book.hasMany(Cart, { foreignKey: "book_id" });

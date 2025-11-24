@@ -5,7 +5,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "kartikrastogi4544@gmail.com",
-    pass: "wztfrihnnevwisbs",
+    pass: "rbmywhkvxhlodcoc",
   },
 });
 
@@ -29,7 +29,9 @@ export const sendOTP = async (to, otp) => {
 
     await transporter.sendMail(mailOptions);
     console.log(`✅ OTP sent to ${to}`);
+    return { success: true };
   } catch (error) {
     console.error("❌ Error sending email:", error);
+    return { success: false, message: "Email sending failed" };
   }
 };

@@ -390,40 +390,96 @@ export const signup = async (req, res) => {
   }
 };
 
+// export const login = async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+
+//     if (!email || !password) {
+//       return res.status(400).json({ 
+//         success: false,
+//         message: "Email and password are required" 
+//       });
+//     }
+// // CHECK IF USER HAS VERIFIED OTP
+// if (!data.user || !data.user.is_otp_verified) {
+//   return res.status(400).json({
+//     success: false,
+//     message: "OTP not verified. Please verify OTP before logging in."
+//   });
+// }
+
+//     const data = await loginService(email, password);
+
+//     if (data.success) {
+//       return res.status(200).json({
+//         success: true,
+//         token: data.data,
+//         message: data.message,
+//         isAdmin: data.isAdmin,
+//         userId: data.userId
+//       });
+//     } else {
+//       return res.status(400).json({ 
+//         success: false,
+//         message: data.message 
+//       });
+//     }
+//   } catch (err) {
+//     console.error("Login error:", err);
+//     res.status(500).json({ 
+//       success: false,
+//       message: "Error during login" 
+//     });
+//   }
+// };
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         success: false,
-        message: "Email and password are required" 
+        message: "Email and password are required"
       });
     }
 
-    const data = await loginService(email, password);
+    const result = await loginService(email, password);
 
-    if (data.success) {
-      return res.status(200).json({
-        success: true,
-        token: data.data,
-        message: data.message,
-        isAdmin: data.isAdmin,
-        userId: data.userId
-      });
-    } else {
-      return res.status(400).json({ 
+    if (!result.success) {
+      return res.status(400).json({
         success: false,
-        message: data.message 
+        message: result.message
       });
     }
+
+    // Check OTP verification
+    const user = await User.findOne({ where: { email } });
+
+    if (!user.is_otp_verified) {
+      return res.status(403).json({
+        success: false,
+        message: "OTP not verified",
+        requiresOTP: true
+      });
+    }
+   
+
+    return res.status(200).json({
+      success: true,
+      token: result.data,
+      message: "Login successful",
+      isAdmin: result.isAdmin,
+      id: result.id
+    });
+
   } catch (err) {
     console.error("Login error:", err);
-    res.status(500).json({ 
+    return res.status(500).json({
       success: false,
-      message: "Error during login" 
+      message: "Error during login"
     });
   }
 };
+
 
 // export { login, signup, getProfile, updateProfile, verify, getMyBooks};

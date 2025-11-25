@@ -42,6 +42,9 @@ const Cart = sequelize.define("cart",{
         defaultValue: DataTypes.NOW
     },
     
+        // timestamps: true
+    
+    
 })
 User.hasMany(Cart, { foreignKey: "user_id" });
 Book.hasMany(Cart, { foreignKey: "book_id" });

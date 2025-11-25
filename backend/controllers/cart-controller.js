@@ -221,7 +221,7 @@ export const getCart = async (req, res) => {
           "published_on"
         ]
       }],
-      order: [["created_at", "DESC"]]
+      order: [["createdAt", "DESC"]]
     });
 
     res.status(200).json({ 
